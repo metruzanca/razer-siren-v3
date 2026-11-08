@@ -1,0 +1,14 @@
+[Unit]
+Description=Apply saved Razer Seiren V3 microphone gain
+After=wireplumber.service pipewire.service
+Wants=wireplumber.service pipewire.service
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/siren-gain --apply
+RemainAfterExit=yes
+Environment=PATH=/run/current-system/sw/bin:/usr/local/bin:/usr/bin:/bin
+TimeoutStartSec=45
+
+[Install]
+WantedBy=default.target
